@@ -126,5 +126,19 @@ class CartController extends Controller
         }
         
     }
+
+    public function vendorOrders($id)
+    {
+        if(session('role')=='vendor'){
+            $p= session('name');
+            $orders = Neworder::where('name', '=', $p)->get();
+            $vendors = Vendor::find($id);
+            $vendor = Vendor::where('id', $vendors->id)->first();
+            return view('pages.vendor.vendorOrders', compact('orders', 'vendor'));
+            // dd($data);
+            // exit();
+        }
+        
+    }
    
 }

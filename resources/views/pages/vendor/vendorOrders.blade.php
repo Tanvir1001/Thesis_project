@@ -65,42 +65,28 @@
                     <h4 class="my-4 fw-bold text-uppercase"> <span class="text-danger">{{ $vendor->name }}'s</span> All Orders</h4>
                     <table class="table table-borded table-striped table-hover">
                         <tr class="text-center">
-                            <th>Order Id</th>
                             <th>Product Name</th>
-                            <th>Product Id</th>
-                            <th>Address</th>
-                            <th>Phone</th>
+                            <th>Quantity</th>
                             <th>Price</th>
+                            <th>Total Price</th>
                             <th>Method</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Review</th>
                         </tr>
                         @foreach ($orders as $order)
                         <tr class="text-center">
-                            <td>{{ $order->id }}</td>
                             <td>{{ $order->productName }}</td>
-                            <td>{{ $order->productId }}</td>
-                            <td>{{ $order->Address }}</td>
-                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->quantity }}</td>
                             <td>{{ $order->price }}</td>
-                            <td>{{ $order->method }}</td>
+                            <td>{{ $order->total_price }}</td>
+                            <td>{{ $order->payment_status }}</td>
                             <td>
-                                @if($order->status == 'Pending')
-                                <span class="text-danger fw-bold">{{$order->status}}</span>
-                                @elseif($order->status == 'Accept')
-                                <span class="text-success fw-bold">{{$order->status}}</span>
-                                @elseif($order->status == 'Going')
-                                <span class="text-primary fw-bold">{{$order->status}}</span>
-                                @else
-                                <span class="text-black fw-bold">{{$order->status}}</span>
-                                @endif
+                                {{ $order->delivery_status }}
                             </td>
 
                             <td>
-                                <!-- <a class="btn  btn-info btn-sm" href={{ '/productRating/' .$order->productId
+                                <a class="btn  btn-info btn-sm" href={{ '/productRating/' .$order->productId
                                     }}>P_Review</a>
-                                <a class="btn btn-warning btn-sm" href={{ "/updateOrder/" .$order->id }}>Update</a>
-                                <a class="btn btn-danger btn-sm" href={{ "/deleteOrder/" .$order->id }}>Delete</a> -->
                             </td>
                         </tr>
                         @endforeach

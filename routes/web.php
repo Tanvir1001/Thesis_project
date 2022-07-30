@@ -316,9 +316,9 @@ Route::get('/remove_cart/{id}',[CartController::class,'remove_cart'])->name('rem
 Route::get('/cash_order',[CartController::class,'cash_order'])->name('cash.order')->middleware([ValidCustomerOrVendor::class]);
 Route::get('/productss',[CartController::class,'backproduct'])->name('back.products')->middleware([ValidCustomerOrVendor::class]);
 
-
+/// person person order view
 Route::get('/customerOrders/{id}',[CartController::class,'customerOrders'])->name('customerOrders')->middleware([ValidAdminOrCustomer::class]);
-
+Route::get('/vendorOrders/{id}',[CartController::class,'vendorOrders'])->name('vendorOrders')->middleware([ValidAdminOrVendor::class]);
 
 /// admin part order view
 Route::get('/FtoC_Orderlist',[OrderViewController::class,'FtoC_Orderlist'])->name('FtoC.Orderlist');
